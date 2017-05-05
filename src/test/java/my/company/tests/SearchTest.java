@@ -6,6 +6,8 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import ru.yandex.qatools.allure.annotations.Issue;
+import ru.yandex.qatools.allure.annotations.TestCaseId;
 
 import java.net.URL;
 
@@ -27,6 +29,8 @@ public class SearchTest {
     }
 
     @Test
+    @Issue("ISSUE-1")
+    @TestCaseId("TC-1")
     public void searchTest() throws Exception {
         steps.openMainPage();
         steps.search("Allure framework");

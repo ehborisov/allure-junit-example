@@ -2,7 +2,9 @@ package my.company.tests;
 
 import org.junit.Test;
 import ru.yandex.qatools.allure.annotations.Attachment;
+import ru.yandex.qatools.allure.annotations.Issue;
 import ru.yandex.qatools.allure.annotations.Step;
+import ru.yandex.qatools.allure.annotations.TestCaseId;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -21,6 +23,7 @@ import static org.junit.Assert.fail;
 public class SimpleTest {
 
     @Test
+    @TestCaseId("TC-3")
     public void simpleTest() throws Exception {
         assertThat(2, is(2));
     }
@@ -41,6 +44,8 @@ public class SimpleTest {
     }
 
     @Test
+    @TestCaseId("TC-2")
+    @Issue("ID-2")
     public void simpleTestWithAttachments() throws Exception {
         assertThat(2, is(2));
         makeAttach();
