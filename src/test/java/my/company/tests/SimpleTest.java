@@ -25,6 +25,7 @@ public class SimpleTest {
     @Test
     @TestCaseId("TC-3")
     public void simpleTest() throws Exception {
+        saveImgAttachment("img3.jpg");
         assertThat(2, is(2));
     }
 
@@ -49,11 +50,13 @@ public class SimpleTest {
     public void simpleTestWithAttachments() throws Exception {
         assertThat(2, is(2));
         makeAttach();
+        saveImgAttachment("img2.jpg");
     }
 
     @Test
     public void csvAttachmentTest() throws Exception {
         saveCsvAttachment();
+        saveImgAttachment("img1.jpg");
     }
 
     @Attachment(value = "Sample csv attachment", type = "text/csv")
@@ -62,6 +65,12 @@ public class SimpleTest {
         if (resource == null) {
             fail("Couldn't find resource 'sample.csv'");
         }
+        return Files.readAllBytes(Paths.get(resource.toURI()));
+    }
+
+    @Attachment(value = "Sample heavy img attachment", type = "image/jpeg")
+    public byte[] saveImgAttachment(String res) throws URISyntaxException, IOException {
+        URL resource = getClass().getClassLoader().getResource(res);
         return Files.readAllBytes(Paths.get(resource.toURI()));
     }
 }
