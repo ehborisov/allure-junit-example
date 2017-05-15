@@ -25,7 +25,6 @@ public class SimpleTest {
     @Test
     @TestCaseId("TC-3")
     public void simpleTest() throws Exception {
-        saveImgAttachment("very_heavy_attachment.jpg");
         saveImgAttachment("img3.jpg");
         assertThat(2, is(2));
     }
